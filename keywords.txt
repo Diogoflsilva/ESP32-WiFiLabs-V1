@@ -1,0 +1,29 @@
+#######################################
+# ESP32 WiFi Labs V1
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+ESP32Labs	    KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin               KEYWORD2
+read_temp           KEYWORD2
+read_hum            KEYWORD2
+read_ldr            KEYWORD2
+buzzer              KEYWORD2
+clear_oled          KEYWORD2
+text_settings       KEYWORD2
+oled_print          KEYWORD2
+oled_println        KEYWORD2
+led_state           KEYWORD2
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
