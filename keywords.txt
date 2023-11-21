@@ -21,6 +21,7 @@ clear_oled          KEYWORD2
 text_settings       KEYWORD2
 oled_print          KEYWORD2
 oled_println        KEYWORD2
+oled_scroll         KEYWORD2
 led_state           KEYWORD2
 
 

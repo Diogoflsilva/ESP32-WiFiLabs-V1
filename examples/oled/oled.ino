@@ -1,8 +1,8 @@
 /* Example: 
- * OLED Displaying Temperature and Humidity from DHT11 sensor
+ * OLED scrolling text
  * Author: EduEletronics
- */
 
+ */
 #include <ESP32Labs_V1.h>
 
 const int dht_pin = 13;
@@ -19,25 +19,21 @@ ESP32Labs ESP32Labs(dht_pin, bzr_pin, ldr_pin,
 
 void setup() {
   ESP32Labs.begin();
+  Serial.begin(115200);
 
 }
 
 void loop() {
-  ESP32Labs.clear_oled();
-
-  //Getting data from DHT11
-  float t = ESP32Labs.read_temp();
-  float h = ESP32Labs.read_hum();
-
-  // text_settings(Text Size, Cursor POS X, Cursor POS Y);
   ESP32Labs.text_settings(2, 0, 17);
+  ESP32Labs.oled_print("ESP32Labs V1");
 
-   // Displaying on the OLED
-  ESP32Labs.oled_print("Temp:");
-  ESP32Labs.oled_println(String(t));
-
-  ESP32Labs.oled_print("Hum:");
-  ESP32Labs.oled_println(String(h));
+  ESP32Labs.oled_scroll("right");
+  delay(5000);
+  ESP32Labs.oled_scroll("stop");
+  delay(500);
+  ESP32Labs.oled_scroll("left");
+  delay(5000);
+  ESP32Labs.oled_scroll("stop");
+  delay(500);
   
-  delay(1000);
 }

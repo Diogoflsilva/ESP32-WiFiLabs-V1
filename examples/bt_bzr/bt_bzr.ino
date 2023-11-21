@@ -1,5 +1,5 @@
  /* Example: 
- * Using the buttons to control the RGB Led / buzzer
+ * Using the buttons to control the buzzer
  * Author: EduEletronics
  */
 
@@ -22,21 +22,31 @@ void setup() {
 
 void loop() {
   if (ESP32Labs.button(1) == 1) {
-    ESP32Labs.rgb("red");
-  } else if (ESP32Labs.button(2) == 1) {
-    ESP32Labs.rgb("green");
-  } else if (ESP32Labs.button(3) == 1) {
-    ESP32Labs.rgb("blue");
-  } else if (ESP32Labs.button(4) == 1) {
-    ESP32Labs.rgb("white");
-  } else {
-    ESP32Labs.rgb("off");
-  }
-
-  if (ESP32Labs.button(5) == 1) {
     ESP32Labs.buzzer(1);
-  } else {
+    delay(100);
     ESP32Labs.buzzer(0);
-  }
-
+    delay(300);
+  } else if (ESP32Labs.button(2) == 1) {
+    ESP32Labs.buzzer(1);
+    delay(100);
+    ESP32Labs.buzzer(0);
+    delay(100);
+    ESP32Labs.buzzer(1);
+    delay(100);
+    ESP32Labs.buzzer(0);
+    delay(300);
+  } else if (ESP32Labs.button(3) == 1) {
+    ESP32Labs.buzzer(1);
+    delay(100);
+    ESP32Labs.buzzer(0);
+    delay(100);
+    ESP32Labs.buzzer(1);
+    delay(100);
+    ESP32Labs.buzzer(0);
+    delay(100);
+    ESP32Labs.buzzer(1);
+    delay(100);
+    ESP32Labs.buzzer(0);
+    delay(300);
+  } 
 }

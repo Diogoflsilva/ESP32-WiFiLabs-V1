@@ -1,8 +1,8 @@
 /* Example: 
- * OLED Displaying Temperature and Humidity from DHT11 sensor
+ * Displaying LDR Values
  * Author: EduEletronics
- */
 
+ */
 #include <ESP32Labs_V1.h>
 
 const int dht_pin = 13;
@@ -19,25 +19,16 @@ ESP32Labs ESP32Labs(dht_pin, bzr_pin, ldr_pin,
 
 void setup() {
   ESP32Labs.begin();
+  Serial.begin(115200);
 
 }
 
 void loop() {
-  ESP32Labs.clear_oled();
+  int l = ESP32Labs.read_ldr();
 
-  //Getting data from DHT11
-  float t = ESP32Labs.read_temp();
-  float h = ESP32Labs.read_hum();
+  Serial.print("LDR Value: ");
+  Serial.println(l);
 
-  // text_settings(Text Size, Cursor POS X, Cursor POS Y);
-  ESP32Labs.text_settings(2, 0, 17);
-
-   // Displaying on the OLED
-  ESP32Labs.oled_print("Temp:");
-  ESP32Labs.oled_println(String(t));
-
-  ESP32Labs.oled_print("Hum:");
-  ESP32Labs.oled_println(String(h));
-  
+  Serial.println("---------------------");
   delay(1000);
 }

@@ -1,16 +1,16 @@
  /* Example: 
- * Using the buttons to control the RGB Led / buzzer
+ * Using the buttons to control the RGB
  * Author: EduEletronics
  */
 
 #include <ESP32Labs_V1.h>
 
 const int dht_pin = 13;
-const int bzr_pin = 18;
+const int bzr_pin = 15;
 const int ldr_pin = 14;
 
-const int rgb_pins[] = { 4, 16, 17 };           // R G B
-const int bt_pins[] = { 12, 14, 27, 26, 25, 0 };  // BT1 BT2 BT3 BT4 BT5 BT6
+const int rgb_pins[] = { 27, 26, 12 };           // R G B
+const int bt_pins[] = { 25, 33, 32, 19, 18, 5 };  // BT1 BT2 BT3 BT4 BT5 BT6
 
 ESP32Labs ESP32Labs(dht_pin, bzr_pin, ldr_pin,
                     rgb_pins[0], rgb_pins[1], rgb_pins[2],
@@ -27,16 +27,7 @@ void loop() {
     ESP32Labs.rgb("green");
   } else if (ESP32Labs.button(3) == 1) {
     ESP32Labs.rgb("blue");
-  } else if (ESP32Labs.button(4) == 1) {
-    ESP32Labs.rgb("white");
   } else {
     ESP32Labs.rgb("off");
   }
-
-  if (ESP32Labs.button(5) == 1) {
-    ESP32Labs.buzzer(1);
-  } else {
-    ESP32Labs.buzzer(0);
-  }
-
 }

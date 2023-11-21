@@ -54,10 +54,10 @@ void ESP32Labs::begin()
   display.setCursor(0, 17);
   display.println("EduEletronics");
   display.println("ESP32Labs V1");
-  display.println("Firmware: V0.0.1");
+  display.println("Firmware: V0.0.2");
   display.display();
 
-  delay(5000);
+  delay(2000);
   display.clearDisplay();
   delay(100);
 }
@@ -76,7 +76,7 @@ float ESP32Labs::read_hum()
 
 int ESP32Labs::read_ldr()
 {
-  int l = digitalRead(_ldr_pin);
+  int l = analogRead(_ldr_pin);
   return l;
 }
 
@@ -175,6 +175,18 @@ void ESP32Labs::oled_println(String text)
   display.display();
 }
 
+void ESP32Labs::oled_scroll(String scroll)
+{
+  if (scroll == "left") {
+    display.startscrollleft(0x00, 0x0F);
+  } else if (scroll == "right") {
+    display.startscrollright(0x00, 0x0F);
+  } else if (scroll == "stop") {
+    display.stopscroll();
+  }
+}
+
+
 void ESP32Labs:: rgb(String state)
 {
   if (state == "red") {
@@ -194,13 +206,13 @@ void ESP32Labs:: rgb(String state)
     digitalWrite(_led_g_pin, HIGH);
     digitalWrite(_led_b_pin, LOW);
   } else if (state == "magenta") {
+    digitalWrite(_led_r_pin, HIGH);
+    digitalWrite(_led_g_pin, LOW);
+    digitalWrite(_led_b_pin, HIGH);
+  } else if (state == "cyan") {
     digitalWrite(_led_r_pin, LOW);
     digitalWrite(_led_g_pin, HIGH);
     digitalWrite(_led_b_pin, HIGH);
-  } else if (state == "cyan") {
-    digitalWrite(_led_r_pin, HIGH);
-    digitalWrite(_led_g_pin, HIGH);
-    digitalWrite(_led_b_pin, LOW);
   } else if (state == "white") {
     digitalWrite(_led_r_pin, HIGH);
     digitalWrite(_led_g_pin, HIGH);

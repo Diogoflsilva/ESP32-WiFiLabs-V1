@@ -23,6 +23,7 @@ class ESP32Labs
     void text_settings(float textSize, int x_cur, int y_cur);
     void oled_print(String text);
     void oled_println(String text);
+    void oled_scroll(String scroll);
     void rgb(String state);
 
   private:
@@ -38,7 +39,7 @@ class ESP32Labs
     int _bt4_pin;
     int _bt5_pin;
     int _bt6_pin;
-    DHT *dht;
+    DHT *dht; 
 };
 
 #endif
